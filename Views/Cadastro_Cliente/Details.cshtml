@@ -1,0 +1,69 @@
+﻿@model CadastroDeCliente.Models.Cadastro_Cliente
+
+@{
+    ViewData["Title"] = "Detalhes do Cliente";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+        <div class="row mb-4">
+            <div class="col-md-4 text-center">
+                <h5>Foto</h5>
+                @if (!string.IsNullOrEmpty(Model.Foto))
+                {
+                    <img src="@Model.Foto" alt="Foto do Cliente" class="img-thumbnail mt-2" />
+                }
+                else
+                {
+                    <div class="alert alert-secondary mt-2" role="alert">
+                        Sem imagem disponível
+                    </div>
+                }
+            </div>
+            <div class="col-md-8">
+                <dl class="row">
+                    <dt class="col-sm-4">Nome</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Nome)</dd>
+
+                    <dt class="col-sm-4">E-mail</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                    <dt class="col-sm-4">Data de Nascimento</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.DataNascimento)</dd>
+
+                    <dt class="col-sm-4">Sexo</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Sexo)</dd>
+                </dl>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Endereço</h4>
+        <dl class="row">
+            <dt class="col-sm-4">Logradouro</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Logradouro),
+                Nº @Html.DisplayFor(model => model.Numero)
+            </dd>
+
+            <dt class="col-sm-4">Complemento</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Complemento)</dd>
+
+            <dt class="col-sm-4">Bairro</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.Bairro)</dd>
+
+            <dt class="col-sm-4">Cidade</dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Cidade),
+                @Html.DisplayFor(model => model.Estado)
+            </dd>
+
+            <dt class="col-sm-4">CEP</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.CEP)</dd>
+        </dl>
+
+        <div class="mt-4 text-center">
+            <a asp-action="Index" class="btn btn-lg">Voltar</a>
+        </div>
+    </div>
+</div>

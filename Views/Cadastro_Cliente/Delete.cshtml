@@ -1,0 +1,52 @@
+﻿@model CadastroDeCliente.Models.Cadastro_Cliente
+
+@{
+    ViewData["Title"] = "Excluir Cliente";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="alert alert-danger text-center" role="alert">
+                <h5>Tem certeza de que deseja excluir este cliente?</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <dl class="row">
+                        <dt class="col-sm-4">Nome</dt>
+                        <dd class="col-sm-8">@Model.Nome</dd>
+
+                        <dt class="col-sm-4">E-mail</dt>
+                        <dd class="col-sm-8">@Model.Email</dd>
+
+                        <dt class="col-sm-4">Data de Nascimento</dt>
+                        <dd class="col-sm-8">@Model.DataNascimento?.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Sexo</dt>
+                        <dd class="col-sm-8">@Model.Sexo</dd>
+
+                        <dt class="col-sm-4">Endereço</dt>
+                        <dd class="col-sm-8">
+                            @Model.Logradouro, @Model.Numero,
+                            @if (!string.IsNullOrEmpty(Model.Complemento))
+                            {
+                                <span>@Model.Complemento, </span>
+                            }
+                            @Model.Bairro, @Model.Cidade - @Model.Estado, @Model.CEP
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="mt-4 text-center">
+                <button type="submit" class="btn btn-danger btn-lg px-4">Excluir</button>
+                <a asp-action="Index" class="btn btn-secondary btn-lg px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

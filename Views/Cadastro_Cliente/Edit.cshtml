@@ -1,0 +1,116 @@
+﻿@model CadastroDeCliente.Models.Cadastro_Cliente
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-center mb-4">@ViewData["Title"]</h2>
+
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Nome" class="form-label">Nome</label>
+                        <input asp-for="Nome" class="form-control" placeholder="Digite o nome completo" />
+                        <span asp-validation-for="Nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label">E-mail</label>
+                        <input asp-for="Email" class="form-control" placeholder="Digite o e-mail" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="DataNascimento" class="form-label">Data de Nascimento</label>
+                        <input asp-for="DataNascimento" type="date" class="form-control" />
+                        <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Sexo" class="form-label">Sexo</label>
+                        <select asp-for="Sexo" class="form-select">
+                            <option value="">Selecione</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                        <span asp-validation-for="Sexo" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="Logradouro" class="form-label">Logradouro</label>
+                        <input asp-for="Logradouro" class="form-control" placeholder="Digite o endereço" />
+                        <span asp-validation-for="Logradouro" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Numero" class="form-label">Número</label>
+                            <input asp-for="Numero" type="number" class="form-control" placeholder="Número da residência" />
+                            <span asp-validation-for="Numero" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Complemento" class="form-label">Complemento</label>
+                            <input asp-for="Complemento" class="form-control" placeholder="Apto, bloco, etc." />
+                            <span asp-validation-for="Complemento" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Bairro" class="form-label">Bairro</label>
+                        <input asp-for="Bairro" class="form-control" placeholder="Digite o bairro" />
+                        <span asp-validation-for="Bairro" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Cidade" class="form-label">Cidade</label>
+                            <input asp-for="Cidade" class="form-control" placeholder="Digite a cidade" />
+                            <span asp-validation-for="Cidade" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label asp-for="Estado" class="form-label">Estado</label>
+                            <input asp-for="Estado" class="form-control" maxlength="2" placeholder="UF" />
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label asp-for="CEP" class="form-label">CEP</label>
+                            <input asp-for="CEP" class="form-control" placeholder="Digite o CEP" />
+                            <span asp-validation-for="CEP" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Foto" class="form-label">Foto do Cliente</label>
+                <input asp-for="Foto" type="file" class="form-control" />
+                <span asp-validation-for="Foto" class="text-danger"></span>
+                @if (Model.Foto != null)
+                {
+                    <div class="mt-3">
+                        <img src="@Model.Foto" alt="Foto do Cliente" class="img-thumbnail" style="max-width: 150px;" />
+                        <p>Foto atual</p>
+                    </div>
+                }
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-5">Salvar Alterações</button>
+                <a asp-action="Index" class="btn btn-secondary btn-lg px-5">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@4.0.0/dist/jquery.validate.unobtrusive.min.js"></script>
+}
